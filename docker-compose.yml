@@ -24,7 +24,7 @@ services:
           - "9000:9000"
     web_server:
         container_name: container_magento2
-        image: meanbee/magento2-nginx:1.9
+        image: alexcheng/magento2
         depends_on:
           - php
           - nginx

@@ -9,6 +9,7 @@ ADD magento2.conf /etc/nginx/sites-available/
 RUN sed "/fastcgi_read_timeout 60s;/c\  fastcgi_read_timeout ${MAX_EXECUTION_TIME}s;" -i /etc/nginx/nginx.conf
 
 RUN echo "upstream php-upstream { server php:9000; }" > /etc/nginx/conf.d/upstream.conf
+#RUN chmod -R 777 /var/www/
 RUN usermod -u 1000 www-data
 
 # Configure the virtual host
