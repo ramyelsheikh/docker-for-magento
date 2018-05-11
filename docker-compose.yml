@@ -18,7 +18,6 @@ services:
             args:
                 TIMEZONE: ${TIMEZONE}
         volumes:
-            - ${Magento2_APP_PATH}:/var/www/magento2
             - ./logs/magento2:/var/www/magento2/app/logs
         ports:
           - "9000:9000"
