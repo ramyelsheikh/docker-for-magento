@@ -1,7 +1,7 @@
 FROM alexcheng/apache2-php7:7.1.11
 
 ENV MAGENTO_VERSION 2.2.3
-ENV INSTALL_DIR /var/www/magento2
+ENV INSTALL_DIR /var/www/html
 ENV COMPOSER_HOME /var/www/.composer/
 
 RUN curl -sS https://getcomposer.org/installer | php \
@@ -29,7 +29,7 @@ RUN chsh -s /bin/bash www-data
 RUN cd /tmp && \
   curl https://codeload.github.com/magento/magento2/tar.gz/$MAGENTO_VERSION -o $MAGENTO_VERSION.tar.gz && \
   tar xvf $MAGENTO_VERSION.tar.gz && \
-  mkdir /var/www/magento2 && \
+#  mkdir $INSTALL_DIR && \
   mv magento2-$MAGENTO_VERSION/* magento2-$MAGENTO_VERSION/.htaccess $INSTALL_DIR
 
 RUN chown -R www-data:www-data /var/www
