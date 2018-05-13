@@ -4,8 +4,12 @@ ENV MAGENTO_VERSION 2.2.3
 ENV INSTALL_DIR /code
 ENV COMPOSER_HOME /code/.composer/
 
-RUN curl -sS https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/composer
+RUN apt-get update
+
+RUN apt-get install -y curl php-cli php-mbstring git unzip
+
+RUN curl -sS https://getcomposer.org/installer -o composer-setup.php && \
+ php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 RUN chsh -s /bin/bash www-data
 
