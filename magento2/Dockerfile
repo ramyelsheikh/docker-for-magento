@@ -15,6 +15,8 @@ RUN cd /tmp && \
   cp -Rv magento2-$MAGENTO_VERSION/* $INSTALL_DIR/
 
 RUN chown -R www-data:www-data $INSTALL_DIR
+RUN apt-get update
+RUN sudo apt-get install php7.1-gd php7.1-mcrypt php7.1-curl php7.1-intl php7.1-xsl php7.1-mbstring php7.1-zip php7.1-soap php7.1-bcmath
 RUN su www-data -c "cd $INSTALL_DIR && composer install"
 RUN su www-data -c "cd $INSTALL_DIR && composer config repositories.magento composer https://repo.magento.com/"
 
